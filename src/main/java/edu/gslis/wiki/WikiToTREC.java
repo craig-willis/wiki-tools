@@ -93,10 +93,7 @@ public class WikiToTREC  implements DumpWriter {
 //        String pageId = String.valueOf(page.Id);
 //        currentDoc += "<DOCNO>" + pageId + "</DOCNO>\n";
         
-        String pageTitle = page.Title.Text;
-        currentTitle = pageTitle;
-        System.err.println("Indexing " + pageTitle);
-        currentDoc += "<DOCNO>" + pageTitle + "</DOCNO>\n";
+        currentTitle = page.Title.Text;
     }
     
     public void writeEndPage() throws IOException {
@@ -117,7 +114,9 @@ public class WikiToTREC  implements DumpWriter {
             TextConverter p = new TextConverter(wikicfg, 80);
             output = (String) p.go(cp.getPage());
             
-            currentDoc += "<TITLE>" + pageTitle.getTitle() + "</TITLE>\n";
+            System.err.println("Indexing " + pageTitle);
+            currentDoc += "<DOCNO>" + pageTitle.getTitle() + "</DOCNO>\n";
+            currentDoc += "<TITLE>" + pageTitle.getFullTitle() + "</TITLE>\n";
 
             output = currentTitle + "\n" + output;     
             
