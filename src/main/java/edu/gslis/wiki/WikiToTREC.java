@@ -97,7 +97,6 @@ public class WikiToTREC  implements DumpWriter {
         currentTitle = pageTitle;
         System.err.println("Indexing " + pageTitle);
         currentDoc += "<DOCNO>" + pageTitle + "</DOCNO>\n";
-        currentDoc += "<TITLE>" + pageTitle + "</TITLE>\n";
     }
     
     public void writeEndPage() throws IOException {
@@ -117,11 +116,17 @@ public class WikiToTREC  implements DumpWriter {
             
             TextConverter p = new TextConverter(wikicfg, 80);
             output = (String) p.go(cp.getPage());
-            output = currentTitle + "\n" + output;                    
+            
+            currentDoc += "<TITLE>" + pageTitle.getTitle() + "</TITLE>\n";
+
+            output = currentTitle + "\n" + output;     
+            
+            currentDoc += "<TEXT>\n" + output + "\n" + "</TEXT>\n";        
+
+            
         } catch (Exception e) {
             System.out.println("Failed to parse page" + currentTitle);
             e.printStackTrace();
         }
-        currentDoc += "<TEXT>\n" + wikitext + "\n" + "</TEXT>\n";        
     }    
 }
