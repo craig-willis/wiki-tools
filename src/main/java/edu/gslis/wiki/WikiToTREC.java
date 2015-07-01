@@ -97,7 +97,7 @@ public class WikiToTREC  implements DumpWriter {
         
         String pageTitle = page.Title.Text;
         currentTitle = pageTitle;
-        System.out.println("Indexing " + pageTitle);
+        System.err.println("Indexing " + pageTitle);
         currentDoc += "<DOCNO>" + pageTitle + "</DOCNO>\n";
         currentDoc += "<TITLE>" + pageTitle + "</TITLE>\n";
     }
