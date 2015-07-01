@@ -46,7 +46,7 @@ public class WikiToTREC  implements DumpWriter {
             // Use commons-compress to auto-detect compressed formats
             InputStream ois = new BufferedInputStream(new FileInputStream(input));
             InputStream is = new CompressorStreamFactory().createCompressorInputStream(ois);                
-            System.out.println("Auto-detected format");
+            System.err.println("Auto-detected format");
             reader = new InputStreamReader(is, "UTF-8");
 
         } catch (Exception e) {
@@ -54,10 +54,10 @@ public class WikiToTREC  implements DumpWriter {
                 InputStream ois = new BufferedInputStream(new FileInputStream(input));
                 // Try XZ directly, for grins
                 InputStream is = new XZCompressorInputStream(ois);
-                System.out.println("Reading XZ compressed text");
+                System.err.println("Reading XZ compressed text");
                 reader = new InputStreamReader(is, "UTF-8");
             } catch (Exception e2) {
-                System.out.println("Assuming UTF-8 encoded text");
+                System.err.println("Assuming UTF-8 encoded text");
                 // Treat as uncompressed raw XML
                 reader = new InputStreamReader(new FileInputStream(input));                    
             }
