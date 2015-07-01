@@ -122,8 +122,6 @@ public class WikiToTREC  implements DumpWriter {
             System.out.println("Failed to parse page" + currentTitle);
             e.printStackTrace();
         }
-        currentDoc += "<TEXT>\n" + wikitext + "\n" + "</TEXT>\n";
-        
-        System.out.println(currentDoc);
+        currentDoc += "<TEXT>\n" + wikitext + "\n" + "</TEXT>\n";        
     }    
 }
