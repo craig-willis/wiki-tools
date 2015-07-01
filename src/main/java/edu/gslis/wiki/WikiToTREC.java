@@ -89,8 +89,6 @@ public class WikiToTREC  implements DumpWriter {
     }
 
     public void writeStartPage(Page page) throws IOException {
-        currentDoc = "";
-        
         currentDoc += "<DOC>\n";
 //        String pageId = String.valueOf(page.Id);
 //        currentDoc += "<DOCNO>" + pageId + "</DOCNO>\n";
@@ -104,6 +102,8 @@ public class WikiToTREC  implements DumpWriter {
     
     public void writeEndPage() throws IOException {
         currentDoc += "</DOC>\n";
+        System.out.println(currentDoc);
+        currentDoc = "";
     }
 
     public void writeRevision(Revision revision) throws IOException {
@@ -123,5 +123,7 @@ public class WikiToTREC  implements DumpWriter {
             e.printStackTrace();
         }
         currentDoc += "<TEXT>\n" + wikitext + "\n" + "</TEXT>\n";
+        
+        System.out.println(currentDoc);
     }    
 }
