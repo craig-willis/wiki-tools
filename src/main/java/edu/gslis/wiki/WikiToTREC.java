@@ -114,7 +114,7 @@ public class WikiToTREC  implements DumpWriter {
             TextConverter p = new TextConverter(wikicfg, 80);
             output = (String) p.go(cp.getPage());
             
-            System.err.println("Indexing " + pageTitle);
+            System.err.println("Indexing " + pageTitle.getTitle());
             currentDoc += "<DOCNO>" + pageTitle.getTitle() + "</DOCNO>\n";
             currentDoc += "<TITLE>" + pageTitle.getFullTitle() + "</TITLE>\n";
 
