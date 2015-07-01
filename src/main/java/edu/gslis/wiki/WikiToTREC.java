@@ -103,7 +103,7 @@ public class WikiToTREC  implements DumpWriter {
     }
     
     public void writeEndPage() throws IOException {
-        currentDoc += "</DOC>";
+        currentDoc += "</DOC>\n";
     }
 
     public void writeRevision(Revision revision) throws IOException {
